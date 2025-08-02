@@ -72,5 +72,22 @@ A full-stack MERN (MongoDB, Express.js, React.js, Node.js) web application for s
 4. **Track**: QR path is updated with every new location
 
 
-## 📁 Project Structure (Suggested)
+---
+
+## 🚧 Setup Instructions
+
+```bash
+# Clone repository
+git clone https://github.com/your-username/qr-code-management.git
+cd qr-code-management
+
+# Setup backend
+cd server
+npm install
+npm run dev
+
+# Setup frontend
+cd ../client
+npm install
+npm run dev
 
