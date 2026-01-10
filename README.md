@@ -52,7 +52,7 @@ A full-stack MERN (MongoDB, Express.js, React.js, Node.js) web application for s
 - `PublicRoute`: Prevents logged-in users from accessing login/signup.
 
 ### 3️⃣ Admin Features
-- 🔹 Generate and manage QR codes (random 16-digit codes)
+- 🔹 Generate and manage QR codes (random 16-digit number)
 - 🔹 View all users and QR codes in the system
 - 🔹 Download and share QR codes as images
 
