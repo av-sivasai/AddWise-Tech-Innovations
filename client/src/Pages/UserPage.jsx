@@ -467,10 +467,10 @@ const UserPage = () => {
   return (
     <div>
       <Navbar/>
-    <div className="min-h-screen bg-[#932558] p-8">
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-purple-900 to-gray-900 flex items-center justify-center p-4">
         <div className="max-w-6xl mx-auto">
         <h1 className="text-3xl font-bold text-[#ffffff] mb-6">User Dashboard</h1>
-          <div className="bg-[#ba229c] rounded-lg p-6 mb-8">
+          <div className="bg-[#67a3d4] rounded-lg p-6 mb-8">
           <h2 className="text-xl font-semibold text-[#1c180d] mb-4">Welcome, {user.user.name}!</h2>
             <p className="text-white-600 mb-6">Scan or upload QR codes to claim them.</p>
             

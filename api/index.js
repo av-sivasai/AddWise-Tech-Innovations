@@ -28,10 +28,10 @@ app.use('/api/qr', QrRoute);
 
 mongoose.connect(process.env.MONGODB)
 .then(()=>{
-    console.log("database is conneted");
+    console.log("Database Connected");
 }) 
 .catch(()=>{
-    console.log("database is failed to connect")
+    console.log("Database is failed to connect")
 }) 
 
 app.listen(PORT, ()=>{
