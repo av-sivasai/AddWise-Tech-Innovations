@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { useSelector } from 'react-redux';
+import { API_BASE_URL } from '../apiConfig';
 import { toast } from 'react-toastify';
 import { Html5Qrcode } from 'html5-qrcode';
 import jsQR from 'jsqr';
@@ -109,7 +110,7 @@ const UserPage = () => {
     
     // Fetch claimed QR codes
     try {
-      const claimedUrl = `${import.meta.env.VITE_API_BASE_URL}/qr/user/${user.user._id}`;
+      const claimedUrl = `${API_BASE_URL}/qr/user/${user.user._id}`;
       const claimedResponse = await fetch(claimedUrl, { credentials: 'include' });
       const claimedData = await claimedResponse.json();
       if (claimedResponse.ok) {
@@ -121,7 +122,7 @@ const UserPage = () => {
 
     // Fetch unclaimed QR codes
     try {
-      const unclaimedUrl = `${import.meta.env.VITE_API_BASE_URL}/qr/unclaimed`;
+      const unclaimedUrl = `${API_BASE_URL}/qr/unclaimed`;
       const unclaimedResponse = await fetch(unclaimedUrl, { credentials: 'include' });
       const unclaimedData = await unclaimedResponse.json();
       if (unclaimedResponse.ok) {
@@ -148,7 +149,7 @@ const UserPage = () => {
     }
     setLoading(true);
     try {
-      const url = `${import.meta.env.VITE_API_BASE_URL}/qr/claim`;
+      const url = `${API_BASE_URL}/qr/claim`;
         const response = await fetch(url, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -433,7 +434,7 @@ const UserPage = () => {
       const lat = pos.coords.latitude;
       const lng = pos.coords.longitude;
       try {
-        const url = `${import.meta.env.VITE_API_BASE_URL}/qr/${qr.value}/path`;
+        const url = `${API_BASE_URL}/qr/${qr.value}/path`;
         const response = await fetch(url, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },

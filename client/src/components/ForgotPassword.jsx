@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { API_BASE_URL, fetchJson } from '../apiConfig';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -25,13 +26,11 @@ const ForgotPassword = () => {
     setIsLoading(true);
 
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/auth/forgot-password`, {
+      const { response, data } = await fetchJson(`${API_BASE_URL}/auth/forgot-password`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email })
       });
-
-      const data = await response.json();
 
       if (!response.ok) {
         toast.error(data.message || "Email not found");
@@ -64,7 +63,7 @@ const ForgotPassword = () => {
     setIsLoading(true);
 
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/auth/reset-password`, {
+      const { response, data } = await fetchJson(`${API_BASE_URL}/auth/reset-password`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -72,8 +71,6 @@ const ForgotPassword = () => {
           newPassword: formData.newPassword
         })
       });
-
-      const data = await response.json();
 
       if (!response.ok) {
         toast.error(data.message || "Failed to reset password");

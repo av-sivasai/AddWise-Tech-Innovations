@@ -19,7 +19,7 @@ const QRScannerPage = () => {
     setQrDetails(null);
 
     try {
-      const url = `${import.meta.env.VITE_API_BASE_URL}/qr/details/${scannedValue}`;
+      const url = `${API_BASE_URL}/qr/details/${scannedValue}`;
       const response = await fetch(url, { credentials: 'include' });
       const data = await response.json();
       

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
+import { API_BASE_URL } from '../apiConfig';
 import { toast } from 'react-toastify';
 import Navbar from '../components/Navbar';
 import { QRCodeSVG } from 'qrcode.react';
@@ -18,7 +19,7 @@ const AdminPage = () => {
     // Fetch all users
     const fetchUsers = async () => {
       try {
-        const url = `${import.meta.env.VITE_API_BASE_URL}/auth/users`;
+        const url = `${API_BASE_URL}/auth/users`;
         const response = await fetch(url, { credentials: 'include' });
         const data = await response.json();
         if (response.ok) setUsers(data.users);
@@ -27,7 +28,7 @@ const AdminPage = () => {
     // Fetch all QR codes
     const fetchAllQRCodes = async () => {
       try {
-        const url = `${import.meta.env.VITE_API_BASE_URL}/qr/all`;
+        const url = `${API_BASE_URL}/qr/all`;
         const response = await fetch(url, { credentials: 'include' });
         const data = await response.json();
         if (response.ok) setAllQRCodes(data.qrCodes);
@@ -58,7 +59,7 @@ const AdminPage = () => {
       });
     }
     try {
-      const url = `${import.meta.env.VITE_API_BASE_URL}/qr/save`;
+      const url = `${API_BASE_URL}/qr/save`;
       const response = await fetch(url, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -67,7 +68,7 @@ const AdminPage = () => {
       });
       if (response.ok) {
         setGeneratedQRCodes(newQRCodes);
-        const allRes = await fetch(`${import.meta.env.VITE_API_BASE_URL}/qr/all`, { credentials: 'include' });
+        const allRes = await fetch(`${API_BASE_URL}/qr/all`, { credentials: 'include' });
         const allData = await allRes.json();
         if (allRes.ok) setAllQRCodes(allData.qrCodes);
         toast.success(`${numberOfQRCodes} QR code(s) generated successfully!`);
@@ -113,13 +114,13 @@ const AdminPage = () => {
   const handleDeleteQRCode = async (qrId) => {
     if (!window.confirm('Are you sure you want to delete this QR code?')) return;
     try {
-      const url = `${import.meta.env.VITE_API_BASE_URL}/qr/${qrId}`;
+      const url = `${API_BASE_URL}/qr/${qrId}`;
       const response = await fetch(url, {
         method: 'DELETE',
         credentials: 'include',
       });
       if (response.ok) {
-        const allRes = await fetch(`${import.meta.env.VITE_API_BASE_URL}/qr/all`, { credentials: 'include' });
+        const allRes = await fetch(`${API_BASE_URL}/qr/all`, { credentials: 'include' });
         const allData = await allRes.json();
         if (allRes.ok) setAllQRCodes(allData.qrCodes);
         toast.success('QR code deleted successfully!');
