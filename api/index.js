@@ -13,10 +13,25 @@ const app = express();
 
 app.use(cookieParser())
 app.use(express.json())
+// configure CORS to allow multiple origins and localhost in development
+const rawOrigins = process.env.FRONTEND_URL || '';
+const allowedOrigins = rawOrigins.split(',').map(s => s.trim()).filter(Boolean);
+if (process.env.NODE_ENV === 'development') {
+    if (!allowedOrigins.includes('http://localhost:5173')) {
+        allowedOrigins.push('http://localhost:5173');
+    }
+}
+console.log('Allowed CORS origins:', allowedOrigins);
+
 app.use(cors({
-    origin : process.env.FRONTEND_URL,
-    credentials : true
-}))
+    origin: (origin, callback) => {
+        // allow requests with no origin like mobile apps or curl
+        if (!origin) return callback(null, true);
+        if (allowedOrigins.includes(origin)) return callback(null, true);
+        callback(new Error('Not allowed by CORS'));
+    },
+    credentials: true,
+}));
 
 
 //route setup

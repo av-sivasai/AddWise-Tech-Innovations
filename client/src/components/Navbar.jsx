@@ -233,14 +233,7 @@ const Navbar = () => {
         </div>
       </header>
 
-      {/* Toast notification container */}
-      <ToastContainer 
-        position="top-center" 
-        autoClose={2000} 
-        theme="dark"
-        toastClassName="bg-gray-800 border border-gray-700 rounded-lg"
-        progressClassName="bg-gradient-to-r from-purple-500 to-pink-500"
-      />
+      {/* ToastContainer is provided at app root (App.jsx) */}
     </>
   );
 };

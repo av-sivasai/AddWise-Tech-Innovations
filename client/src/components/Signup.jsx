@@ -219,17 +219,10 @@ const Signup = () => {
         </div>
       </div>
 
-      {/* Toast notification container */}
-      <ToastContainer 
-        position="top-center" 
-        autoClose={3000} 
-        theme="dark"
-        toastClassName="bg-gray-800 border border-gray-700 rounded-lg"
-        progressClassName="bg-gradient-to-r from-purple-500 to-pink-500"
-      />
+      {/* ToastContainer is provided at app root (App.jsx) */}
       
       {/* Animation styles */}
-      <style jsx global>{`
+      <style>{`
         @keyframes text-gradient {
           0% { background-position: 0% 50%; }
           50% { background-position: 100% 50%; }

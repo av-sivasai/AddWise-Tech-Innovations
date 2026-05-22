@@ -209,18 +209,12 @@ const HomePage = () => {
           </div>
         </section>
 
-        <ToastContainer 
-          position="top-center" 
-          autoClose={2000} 
-          theme="dark"
-          toastClassName="bg-gray-800 border border-gray-700 rounded-lg"
-          progressClassName="bg-gradient-to-r from-purple-500 to-blue-500"
-        />
+        {/* ToastContainer is provided at app root (App.jsx) */}
         <SimpleFooter />
       </div>
       
       {/* Global Animation Styles */}
-      <style jsx global>{`
+      <style>{`
         @keyframes float {
           0%, 100% { transform: translateY(0) rotate(0deg); }
           50% { transform: translateY(-20px) rotate(2deg); }
